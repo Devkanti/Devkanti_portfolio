@@ -38,6 +38,7 @@ This portfolio was built entirely from scratch using:
 
 ## 📂 Project Structure
 ```text
+PortfolioDev
 │
 ├── index.html        # Home Page
 ├── about.html        # Background & Skills
