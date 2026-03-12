@@ -10,6 +10,7 @@
     --accent-3: #06b6d4; /* Cyan */
 }
 
+/* Reset and ensure no horizontal scrolling ever happens */
 * {
     margin: 0;
     padding: 0;
@@ -17,14 +18,18 @@
     font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif;
 }
 
+html, body {
+    overflow-x: hidden;
+    max-width: 100vw;
+}
+
 body {
     background-color: var(--bg-color);
     color: var(--text-primary);
     min-height: 100vh;
-    overflow-x: hidden;
     line-height: 1.6;
     display: flex;
-    flex-direction: column; /* Ensures footer stays at the bottom */
+    flex-direction: column;
 }
 
 /* --- Ambient Background Lights --- */
@@ -35,7 +40,6 @@ body {
     width: 100vw;
     height: 100vh;
     z-index: -1;
-    overflow: hidden;
     background: #000;
 }
 
@@ -94,7 +98,6 @@ body {
 .glass-nav a { color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.3s ease; position: relative; }
 .glass-nav a:hover, .glass-nav a.active { color: var(--text-primary); }
 
-/* Active Indicator */
 .glass-nav a.active::after {
     content: '';
     position: absolute;
@@ -113,25 +116,13 @@ body {
     margin: 150px auto 100px;
     padding: 0 2rem;
     perspective: 1000px;
-    flex: 1; /* Pushes the footer down naturally */
+    flex: 1;
 }
 
-.badge {
-    display: inline-block;
-    padding: 0.4rem 1rem;
-    font-size: 0.8rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid var(--glass-border);
-    border-radius: 100px;
-    margin-bottom: 2rem;
-}
-
-h1 { font-size: clamp(3rem, 6vw, 5rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 1rem; }
+.badge { display: inline-block; padding: 0.4rem 1rem; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; background: rgba(255, 255, 255, 0.05); border: 1px solid var(--glass-border); border-radius: 100px; margin-bottom: 2rem; }
+h1 { font-size: clamp(2.5rem, 6vw, 5rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 1rem; }
 .gradient-text { background: linear-gradient(135deg, #fff 0%, #a1a1aa 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-h2 { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 500; color: var(--text-secondary); margin-bottom: 2rem; }
+h2 { font-size: clamp(1.2rem, 3vw, 2rem); font-weight: 500; color: var(--text-secondary); margin-bottom: 2rem; }
 p { font-size: 1.125rem; color: var(--text-secondary); max-width: 600px; margin-bottom: 3rem; }
 
 /* --- Premium Buttons --- */
@@ -146,11 +137,11 @@ p { font-size: 1.125rem; color: var(--text-secondary); max-width: 600px; margin-
 .fade-up { opacity: 0; transform: translateY(40px); animation: fadeUpAnim 1s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
 @keyframes fadeUpAnim { to { opacity: 1; transform: translateY(0); } }
 
-/* --- Bento Box & Card Layouts for Other Pages --- */
+/* --- Bento Box & Card Layouts --- */
 .page-header { margin-bottom: 3rem; }
 .bento-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 2rem;
 }
 
@@ -164,12 +155,12 @@ p { font-size: 1.125rem; color: var(--text-secondary); max-width: 600px; margin-
     padding: 2.5rem;
     transition: transform 0.3s ease, border-color 0.3s ease;
     display: flex;
-    flex-direction: column; /* Equal heights */
+    flex-direction: column;
 }
 
 .glass-card:hover { border-color: rgba(255, 255, 255, 0.2); }
 .glass-card h3 { font-size: 1.5rem; margin-bottom: 1rem; color: var(--text-primary); }
-.glass-card p { font-size: 1rem; margin-bottom: 0; flex-grow: 1; /* Pushes buttons down */ }
+.glass-card p { font-size: 1rem; margin-bottom: 0; flex-grow: 1; }
 
 /* Timeline specific */
 .timeline { border-left: 2px solid var(--glass-border); padding-left: 2rem; margin-top: 1.5rem; }
@@ -183,26 +174,75 @@ p { font-size: 1.125rem; color: var(--text-secondary); max-width: 600px; margin-
 .btn-small:hover { background: rgba(255, 255, 255, 0.15); border-color: rgba(255, 255, 255, 0.4); transform: translateY(-2px); }
 
 /* --- Footer --- */
-.glass-footer {
-    text-align: center;
-    padding: 2rem 0;
-    margin-top: auto; /* Pushes footer to the bottom */
-    border-top: 1px solid var(--glass-border);
-    background: rgba(0, 0, 0, 0.2);
-    backdrop-filter: blur(12px) saturate(180%);
-    -webkit-backdrop-filter: blur(12px) saturate(180%);
-    color: var(--text-secondary);
-    font-size: 0.9rem;
-    width: 100%;
+.glass-footer { text-align: center; padding: 2rem 0; margin-top: auto; border-top: 1px solid var(--glass-border); background: rgba(0, 0, 0, 0.2); backdrop-filter: blur(12px) saturate(180%); -webkit-backdrop-filter: blur(12px) saturate(180%); color: var(--text-secondary); font-size: 0.9rem; width: 100%; }
+
+
+/* ========================================================
+   📱 BULLETPROOF MOBILE & TABLET RESPONSIVENESS
+   ======================================================== */
+
+/* TABLETS (iPads, smaller laptops) */
+@media (max-width: 992px) {
+    .container { padding: 0 1.5rem; }
+    .glass-panel { padding: 3rem; }
 }
 
-/* --- Mobile Responsiveness --- */
+/* MOBILE PHONES */
 @media (max-width: 768px) {
-    .glass-panel, .glass-card { padding: 2rem; }
-    .glass-nav { width: 95%; padding: 0.75rem 1rem; }
-    .glass-nav ul { gap: 1rem; }
+    /* Main Layout */
+    .container { margin-top: 120px; padding: 0 1rem; }
+    
+    /* Nav Bar Fixes */
+    .glass-nav { 
+        width: 92%; 
+        padding: 1rem; 
+        border-radius: 20px; 
+    }
+    .nav-container { 
+        flex-direction: column; /* Stack Logo and Links */
+        gap: 0.8rem; 
+    }
+    .glass-nav ul { 
+        gap: 1.2rem; 
+        flex-wrap: wrap; /* Allows links to flow instead of squishing */
+        justify-content: center; 
+    }
     .glass-nav a { font-size: 0.85rem; }
-    .btn-group { flex-direction: column; width: 100%; }
-    .btn { width: 100%; }
-    .container { margin-top: 120px; }
+
+    /* Cards and Panels */
+    .glass-panel, .glass-card { 
+        padding: 1.8rem; 
+        border-radius: 20px; 
+    }
+    .bento-grid { 
+        grid-template-columns: 1fr; /* Forces 1 straight column on mobile */
+    }
+
+    /* Buttons */
+    .btn-group { 
+        flex-direction: column; /* Stack buttons vertically */
+        width: 100%; 
+    }
+    .btn { width: 100%; } /* Make buttons full width */
+
+    /* Typography Tweaks */
+    p { font-size: 1rem; margin-bottom: 2rem; }
+    .glass-card h3 { font-size: 1.3rem; }
+
+    /* Timeline Mobile Fix */
+    .timeline { padding-left: 1.2rem; }
+    .timeline-item::before { left: -1.6rem; width: 10px; height: 10px; }
+
+    /* Contact Page List Wrap Fix */
+    .glass-panel ul li {
+        display: flex;
+        flex-direction: column; /* Stacks label and info */
+        margin-bottom: 1rem;
+        line-height: 1.6;
+        word-break: break-word; /* Prevents long emails from breaking layout */
+    }
+    .glass-panel ul li strong { 
+        width: auto !important; /* Overrides inline width */
+        margin-bottom: 0.2rem;
+    }
 }
