@@ -4,7 +4,7 @@ Welcome to my personal developer portfolio.
 This repository contains the source code for my GitHub Pages portfolio website, where I showcase my projects, skills, and work featuring a modern, liquid-glass aesthetic.
 
 ### 🌐 Live Website:
-https://devkantiportfolio.vercel.app/
+https://devkantisarkar.vercel.app/
 
 ---
 
