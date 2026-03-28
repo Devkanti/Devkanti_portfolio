@@ -34,6 +34,7 @@ This portfolio was built entirely from scratch using:
 * Git & GitHub Desktop
 * VS Code
 
+
 ---
 
 ## 📂 Project Structure
