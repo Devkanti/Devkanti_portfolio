@@ -32,6 +32,11 @@
   font-size: 1.15rem;
   line-height: 1.7;
   margin-bottom: 40px;
+
+  /* UPDATED WITH YOUR EXACT PORTFOLIO ACCENT COLOR */
+  border-left: 4px solid var(--accent-color);
+  padding-left: 16px;
+  margin-left: 2px;
 }
 
 .contact-details {
