@@ -138,7 +138,7 @@ const Contact = () => {
                   id="message"
                   name="message"
                   className="form-input form-textarea"
-                  placeholder="Tell me about your project..."
+                  placeholder="Drop a message..."
                   value={formData.message}
                   onChange={handleChange}
                   required
