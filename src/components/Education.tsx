@@ -20,7 +20,7 @@ const Education = () => {
     {
       period: '2011 - 2022',
       institution: "St. Vincent's High & Technical School",
-      degree: 'Secondary',
+      degree: 'Secondary Education',
       details: 'General Studies',
     }
   ];
