@@ -15,13 +15,13 @@ const Education = () => {
       period: '2022 - 2024',
       institution: 'North Point School, Asansol',
       degree: 'Higher Secondary Education',
-      details: 'Completed with focus on Physics, Chemistry, and Mathematics',
+      details: 'Completed with Physics, Chemistry, Mathematics and Biology',
     },
     {
       period: '2011 - 2022',
       institution: "St. Vincent's High & Technical School",
-      degree: 'General Studies',
-      details: '',
+      degree: 'Secondary',
+      details: 'General Studies',
     }
   ];
 
