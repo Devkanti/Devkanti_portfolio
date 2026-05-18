@@ -16,7 +16,7 @@ Welcome to the repository for my personal portfolio! This is a modern, fully res
 * **Database:** MongoDB Atlas
 * **Deployment:** Vercel (CI/CD integrated with GitHub)
 
-📄 License
+## 📄 License
 
 Copyright (c) 2026 Devkanti Sarkar. All Rights Reserved.
 
