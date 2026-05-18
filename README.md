@@ -3,7 +3,7 @@
 Welcome to the repository for my personal portfolio! This is a modern, fully responsive web application built to showcase my projects, skills, and experience as a full-stack developer.
 
 ## 🔗 Live Demo
-**[View My Portfolio Live Here](https://devkantisarkar.vercel.app/)** 
+**[My Portfolio](https://devkantisarkar.vercel.app/)** 
 
 * **Modern UI/UX:** Clean, brutalist-inspired design with smooth scroll animations.
 * **Fully Responsive:** Optimized for mobile, tablet, and desktop viewing.
