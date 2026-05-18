@@ -9,7 +9,7 @@ const Education = () => {
       period: '2024 - 2028',
       institution: 'Vellore Institute of Technology',
       degree: 'B.Tech in Information Technology',
-      details: 'CGPA - 7.14',
+      details: 'CGPA - Coming Soon!',
     },
     {
       period: '2022 - 2024',
