@@ -1,0 +1,118 @@
+.certificates-section {
+  position: relative;
+}
+
+.certificates-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 30px;
+  margin-top: 40px;
+}
+
+@media (min-width: 768px) {
+  .certificates-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .certificates-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.certificate-card {
+  position: relative;
+  padding: 40px 30px 30px;
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  transition: all 0.3s ease;
+  border: 1px solid var(--card-border);
+  background-color: var(--card-bg);
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.certificate-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+}
+
+.cert-icon-wrapper {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 16px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cert-icon {
+  color: var(--accent-color);
+}
+
+.cert-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.cert-title {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+
+.cert-issuer {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.95rem;
+  margin-bottom: 8px;
+}
+
+.cert-date-brutalist {
+  position: absolute;
+  top: 0;
+  right: 24px;
+  transform: translateY(-50%);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: var(--text-primary);
+  background: var(--bg-dark);
+  padding: 4px 12px;
+  font-family: monospace;
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  z-index: 2;
+}
+
+.cert-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 24px;
+}
+
+.cert-link-new {
+  display: inline-flex;
+  align-items: center;
+  font-family: monospace;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #000;
+  background-color: var(--accent-color);
+  padding: 8px 16px;
+  border-radius: 4px;
+  text-decoration: none;
+  letter-spacing: 1px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cert-link-new:hover {
+  transform: translateY(-2px);
+  box-shadow: 4px 4px 0px rgba(0, 255, 204, 0.3);
+  color: #000;
+}
