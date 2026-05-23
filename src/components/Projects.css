@@ -70,6 +70,13 @@
 
 .project-action {
   margin-top: auto;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.btn-icon-only {
+  padding: 8px 12px;
 }
 
 .btn-view-project {

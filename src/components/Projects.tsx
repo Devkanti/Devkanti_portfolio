@@ -1,4 +1,5 @@
 import { useTypewriterOnScroll } from '../hooks/useTypewriterOnScroll';
+import { Eye } from 'lucide-react';
 import './Projects.css';
 
 const Projects = () => {
@@ -9,7 +10,8 @@ const Projects = () => {
       category: 'Backend / Systems',
       title: 'Query Engine',
       description: 'Engineered a containerized Approximate Query Engine delivering high-speed data analytics. Built a custom SQL engine in Rust to bypass database I/O bottlenecks and integrated zero-latency gRPC RPC.',
-      github: 'https://github.com/Devkanti/GDG-Query-Engine'
+      github: 'https://github.com/Devkanti/GDG-Query-Engine',
+      live: 'https://queryengine.vercel.app/'
     },
     {
       category: 'AI & Data Science',
@@ -46,6 +48,11 @@ const Projects = () => {
                 <a href={project.github} className="btn-view-project" target="_blank" rel="noopener noreferrer">
                   VIEW CODE &rarr;
                 </a>
+                {project.live && (
+                  <a href={project.live} className="btn-view-project btn-icon-only" target="_blank" rel="noopener noreferrer" title="View Live Website">
+                    <Eye size={18} />
+                  </a>
+                )}
               </div>
             </div>
           ))}

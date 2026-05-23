@@ -19,6 +19,12 @@ const Certificates = () => {
       link: '/ieee-organizer.jpg' 
     },
     {
+      title: 'Finalist: Smart ABES Hackathon (SAH) 2.0',
+      issuer: 'ABES ACM Chapters',
+      date: 'Feb 2026',
+      link: '/sahcertificate.jpg'
+    },
+    {
       title: 'Hackathon: Develop Secure Mobile/Web App',
       issuer: 'VIT Vellore & Samunnati',
       date: 'Jan 2026',
