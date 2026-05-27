@@ -23,7 +23,8 @@ const Projects = () => {
       category: 'Full-Stack Development',
       title: 'LMS - Learning Platform',
       description: 'Full-stack Learning Management System with secure role-based access. Includes dynamic video lecture delivery, automated backend grading logic using MongoDB, and interactive teacher grading desk.',
-      github: 'https://github.com/Devkanti/Learning-Portal'
+      github: 'https://github.com/Devkanti/Learning-Portal',
+      live: 'https://devkantilearningportal.vercel.app/'
     }
   ];
 
