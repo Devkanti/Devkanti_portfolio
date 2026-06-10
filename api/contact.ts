@@ -1,40 +1,45 @@
-import mongoose from 'mongoose';
+import nodemailer from 'nodemailer';
 
-// 1. Define what a message looks like
-const messageSchema = new mongoose.Schema({
-    name: { type: String, required: true },
-    email: { type: String, required: true },
-    message: { type: String, required: true },
-    createdAt: { type: Date, default: Date.now }
+// Configure Nodemailer Transporter
+const transporter = nodemailer.createTransport({
+    service: 'gmail', // You can change this if you don't use Gmail
+    auth: {
+        user: process.env.EMAIL_USER, // Your email address
+        pass: process.env.EMAIL_PASS  // Your App Password
+    }
 });
 
-// 2. Create the model securely for serverless
-const Message = mongoose.models.Message || mongoose.model('Message', messageSchema);
-
-// 3. The API function that Vercel will run
+// The API function that Vercel will run
 export default async function handler(req: any, res: any) {
     if (req.method !== 'POST') {
         return res.status(405).json({ success: false, message: 'Only POST allowed' });
     }
 
     try {
-        // Connect to your MongoDB database
-        if (mongoose.connection.readyState < 1) {
-            const uri = process.env.MONGO_URI;
-            if (!uri) throw new Error('MONGO_URI is missing');
-            await mongoose.connect(uri);
-        }
-
         // Grab the data from your React form
         const { name, email, message } = req.body;
 
-        // Save it to MongoDB
-        const newMessage = new Message({ name, email, message });
-        await newMessage.save();
+        if (!name || !email || !message) {
+            return res.status(400).json({ success: false, message: 'Missing required fields' });
+        }
 
-        return res.status(201).json({ success: true, message: 'Message saved!' });
+        // Send an email notification
+        if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
+            throw new Error('Email credentials are not configured');
+        }
+
+        await transporter.sendMail({
+            from: process.env.EMAIL_USER,
+            to: process.env.EMAIL_USER, // Send email to yourself
+            replyTo: email, // If you hit reply, it replies to the user
+            subject: `New Portfolio Message from ${name}`,
+            text: `You have a new message from ${name} (${email}):\n\n${message}`,
+            html: `<h3>New Portfolio Message</h3><p><strong>Name:</strong> ${name}</p><p><strong>Email:</strong> ${email}</p><p><strong>Message:</strong><br/>${message.replace(/\n/g, '<br/>')}</p>`
+        });
+
+        return res.status(200).json({ success: true, message: 'Email sent successfully!' });
     } catch (error) {
-        console.error(error);
-        return res.status(500).json({ success: false, error: 'Failed to save' });
+        console.error('Failed to send message:', error);
+        return res.status(500).json({ success: false, error: 'Failed to send message' });
     }
 }
