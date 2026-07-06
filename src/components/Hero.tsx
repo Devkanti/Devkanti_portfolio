@@ -41,22 +41,22 @@ const Hero = () => {
           </p>
 
           <div className="hero-cta">
-            <a href="#projects" className="btn btn-view-work">
+            <a href="#projects" className="btn btn-view-work cursor-target">
               View My Work <ArrowDown size={20} />
             </a>
-            <a href="/Devkanti_Sarkar_Resume.pdf" download className="btn btn-outline">
+            <a href="/Devkanti_Sarkar_Resume.pdf" download className="btn btn-outline cursor-target">
               Download Resume <Download size={20} style={{ marginLeft: '8px' }} />
             </a>
           </div>
 
           <div className="social-links">
-            <a href="https://github.com/Devkanti" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="social-icon">
+            <a href="https://github.com/Devkanti" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="social-icon cursor-target">
               <FiGithub size={24} />
             </a>
-            <a href="https://www.linkedin.com/in/devkantisarkar/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="social-icon">
+            <a href="https://www.linkedin.com/in/devkantisarkar/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="social-icon cursor-target">
               <FiLinkedin size={24} />
             </a>
-            <a href="mailto:work.devkantisarkar@gmail.com" aria-label="Email" className="social-icon">
+            <a href="mailto:work.devkantisarkar@gmail.com" aria-label="Email" className="social-icon cursor-target">
               <FiMail size={24} />
             </a>
           </div>

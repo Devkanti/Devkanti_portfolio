@@ -41,13 +41,6 @@
 @media (min-width: 768px) {
   .desktop-nav {
     display: block;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid var(--card-border);
-    border-radius: 40px;
-    padding: 12px 40px;
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
   }
 }
 
@@ -140,12 +133,7 @@
   left: 24px;
   right: 24px;
   padding: 24px;
-  background: rgba(20, 20, 30, 0.8);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid var(--card-border);
-  border-radius: 16px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+  background: transparent;
   opacity: 0;
   visibility: hidden;
   transform: translateY(-20px);

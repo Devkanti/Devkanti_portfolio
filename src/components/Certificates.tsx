@@ -1,9 +1,9 @@
 import { Award } from 'lucide-react';
-import { useTypewriterOnScroll } from '../hooks/useTypewriterOnScroll';
+import { useScrambleOnScroll } from '../hooks/useScrambleOnScroll';
 import './Certificates.css';
 
 const Certificates = () => {
-  const { displayedText, elementRef } = useTypewriterOnScroll('Certification', 100);
+  const { displayedText, elementRef } = useScrambleOnScroll('Certification', 30);
   // Add your certificates here
   const certsData: { title: string; issuer: string; date: string; link: string; }[] = [
     {
@@ -28,14 +28,20 @@ const Certificates = () => {
       title: 'Hackathon: Develop Secure Mobile/Web App',
       issuer: 'VIT Vellore & Samunnati',
       date: 'Jan 2026',
-      link: '/vit-hackathon.jpg' // Save your image as 'vit-hackathon.jpg' in the public folder
+      link: '/vit-hackathon.jpg'
+    },
+    {
+      title: 'Oracle Certified Professional: Generative AI',
+      issuer: 'Oracle University',
+      date: 'Sep 2025',
+      link: '/oracle-cert.jpg'
     }
   ];
 
   return (
     <section id="certificates" className="section certificates-section">
       <div className="container">
-        <h2 className="section-title fade-in-section" ref={elementRef as React.RefObject<HTMLHeadingElement>}>{displayedText}<span className="cursor-blink">|</span></h2>
+        <h2 className="section-title fade-in-section" ref={elementRef as React.RefObject<HTMLHeadingElement>}>{displayedText}</h2>
         
         <div className="certificates-grid">
           {certsData.map((cert, index) => (
@@ -46,16 +52,19 @@ const Certificates = () => {
             >
               <span className="cert-date-brutalist">{cert.date}</span>
               <div className="cert-icon-wrapper">
-                <Award size={32} className="cert-icon" />
+                <Award size={24} className="cert-icon" />
               </div>
               <div className="cert-content">
                 <h3 className="cert-title">{cert.title}</h3>
                 <p className="cert-issuer">{cert.issuer}</p>
                 <div className="cert-footer">
-                  <a href={cert.link} target="_blank" rel="noopener noreferrer" className="cert-link-new">
+                  <a href={cert.link} target="_blank" rel="noopener noreferrer" className="cert-link-new cursor-target">
                     VIEW &rarr;
                   </a>
                 </div>
+              </div>
+              <div className="cert-thumbnail">
+                <img src={cert.link} alt={`${cert.title} Preview`} loading="lazy" />
               </div>
             </div>
           ))}

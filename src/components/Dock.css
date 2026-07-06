@@ -1,0 +1,100 @@
+.dock-wrapper {
+  margin: 0;
+  display: flex;
+  max-width: 100%;
+}
+
+.dock-panel {
+  display: flex;
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: rgba(18, 15, 23, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+}
+
+.dock-panel.horizontal {
+  flex-direction: row;
+  align-items: flex-end;
+  width: max-content;
+  gap: 1rem;
+  padding: 0.5rem 1rem;
+}
+
+@media (max-width: 768px) {
+  .dock-panel.horizontal {
+    max-width: 90vw;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .dock-panel.horizontal::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.dock-panel.vertical {
+  flex-direction: column;
+  align-items: center;
+  height: max-content;
+  gap: 1rem;
+  padding: 1rem 0.5rem;
+}
+
+.dock-item-container {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  background: rgba(17, 17, 17, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  color: white;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.dock-item-container:hover,
+.dock-item-container:focus {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--accent-color);
+  outline: none;
+}
+
+.dock-item-container.active {
+  background-color: rgba(255, 255, 255, 0.15);
+  color: var(--accent-color);
+  border-color: var(--accent-color);
+}
+
+.dock-label-container {
+  position: absolute;
+  width: max-content;
+  white-space: pre;
+  border-radius: 0.375rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: #120F17;
+  padding: 0.125rem 0.5rem;
+  font-size: 0.75rem;
+  color: white;
+  pointer-events: none;
+}
+
+.dock-label-container.horizontal {
+  top: -2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.dock-label-container.vertical {
+  left: calc(100% + 1rem);
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.dock-icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

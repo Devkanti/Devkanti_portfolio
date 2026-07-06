@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { MapPin, Mail, ArrowUpRight } from 'lucide-react';
 import { FiInstagram } from 'react-icons/fi';
-import { useTypewriterOnScroll } from '../hooks/useTypewriterOnScroll';
+import { useScrambleOnScroll } from '../hooks/useScrambleOnScroll';
 import './Contact.css';
 
 const Contact = () => {
   // Using the updated generic hook for type safety
-  const { displayedText, elementRef } = useTypewriterOnScroll<HTMLHeadingElement>('Get In Touch', 100);
+  const { displayedText, elementRef } = useScrambleOnScroll<HTMLHeadingElement>('Get In Touch', 30);
 
   const [formData, setFormData] = useState({
     name: '',
@@ -60,7 +60,7 @@ const Contact = () => {
     <section id="contact" className="section contact-section">
       <div className="container">
         <h2 className="section-title fade-in-section" ref={elementRef}>
-          {displayedText}<span className="cursor-blink">|</span>
+          {displayedText}
         </h2>
 
         <div className="contact-container">
@@ -115,6 +115,8 @@ const Contact = () => {
                   value={formData.name}
                   onChange={handleChange}
                   required
+                  onInvalid={(e) => (e.target as HTMLInputElement).setCustomValidity('Please tell me your name so I know who I am talking to!')}
+                  onInput={(e) => (e.target as HTMLInputElement).setCustomValidity('')}
                 />
               </div>
 
@@ -129,6 +131,8 @@ const Contact = () => {
                   value={formData.email}
                   onChange={handleChange}
                   required
+                  onInvalid={(e) => (e.target as HTMLInputElement).setCustomValidity('I need your email address so I can reply back to you!')}
+                  onInput={(e) => (e.target as HTMLInputElement).setCustomValidity('')}
                 />
               </div>
 
@@ -142,13 +146,15 @@ const Contact = () => {
                   value={formData.message}
                   onChange={handleChange}
                   required
+                  onInvalid={(e) => (e.target as HTMLTextAreaElement).setCustomValidity('Please write a message before sending!')}
+                  onInput={(e) => (e.target as HTMLTextAreaElement).setCustomValidity('')}
                   rows={5}
                 ></textarea>
               </div>
 
               <button
                 type="submit"
-                className={`btn-submit-brutalist ${isSubmitting ? 'loading' : ''}`}
+                className={`btn-submit-brutalist cursor-target ${isSubmitting ? 'loading' : ''}`}
                 disabled={isSubmitting}
               >
                 {isSubmitting ? 'SENDING...' : (

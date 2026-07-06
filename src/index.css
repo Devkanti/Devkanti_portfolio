@@ -3,7 +3,7 @@
 :root {
   --bg-dark: #111111;
   --bg-gradient: linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-  --glass-bg: rgba(255, 255, 255, 0.03);
+  --glass-bg: #1a1a24;
   --glass-border: rgba(255, 255, 255, 0.08);
   --text-primary: #ffffff;
   --text-secondary: #a0a0b0;
@@ -12,7 +12,7 @@
   --accent-pink: #ff3366;
   --accent-cyan: #00e6ff;
   --accent-purple: #b05cff;
-  --card-bg: rgba(20, 20, 30, 0.6);
+  --card-bg: #161622;
   --card-border: rgba(255, 255, 255, 0.1);
 
   --font-heading: 'Outfit', sans-serif;
@@ -25,8 +25,11 @@
   padding: 0;
 }
 
-html {
+html, body {
   scroll-behavior: smooth;
+  overflow-x: hidden;
+  width: 100%;
+  position: relative;
 }
 
 body {
@@ -38,7 +41,6 @@ body {
   color: var(--text-primary);
   line-height: 1.6;
   min-height: 100vh;
-  overflow-x: hidden;
 }
 
 h1,
@@ -69,16 +71,12 @@ ul {
 /* Glassmorphism Utility Classes */
 .glass {
   background: var(--glass-bg);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--glass-border);
   border-radius: 16px;
 }
 
 .glass-card {
   background: var(--card-bg);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
   border: 1px solid var(--glass-border);
   border-radius: 20px;
   transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
@@ -95,11 +93,11 @@ ul {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 16px;
 }
 
 .section {
-  padding: 60px 0;
+  padding: 40px 0;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -264,4 +262,56 @@ ul {
 .header-get-in-touch:active {
   transform: translate(4px, 4px);
   box-shadow: 0px 0px 0px #fff;
+}
+
+/* Scroll to Top Button */
+.scroll-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  background-color: var(--accent-color);
+  color: #000;
+  border: 2px solid #000;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 4px 4px 0px #000;
+  z-index: 1005;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.scroll-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.scroll-to-top.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(20px);
+}
+
+.scroll-to-top:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px #000;
+}
+
+.scroll-to-top:active {
+  transform: translate(4px, 4px);
+  box-shadow: 0px 0px 0px #000;
+}
+
+@media (max-width: 768px) {
+  .scroll-to-top {
+    bottom: 20px;
+    right: 20px;
+    width: 44px;
+    height: 44px;
+  }
 }

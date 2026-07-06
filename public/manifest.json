@@ -1,0 +1,22 @@
+{
+  "short_name": "Devkanti",
+  "name": "Devkanti Sarkar - Portfolio",
+  "icons": [
+    {
+      "src": "/profile.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/profile.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#ccff00",
+  "background_color": "#0a0a0f"
+}

@@ -1,10 +1,10 @@
-import { useTypewriterOnScroll } from '../hooks/useTypewriterOnScroll';
+import { useScrambleOnScroll } from '../hooks/useScrambleOnScroll';
 import { Eye } from 'lucide-react';
 import './Projects.css';
 
 const Projects = () => {
   // Pass HTMLHeadingElement to the generic hook - clean and type-safe!
-  const { displayedText, elementRef } = useTypewriterOnScroll<HTMLHeadingElement>('Featured Works', 100);
+  const { displayedText, elementRef } = useScrambleOnScroll<HTMLHeadingElement>('Featured Works', 30);
   const projectsData = [
     {
       category: 'Backend / Systems',
@@ -32,7 +32,7 @@ const Projects = () => {
     <section id="projects" className="section projects-section">
       <div className="container">
         {/* The ref is now natively typed, no "as" keyword needed */}
-        <h2 className="section-title fade-in-section" ref={elementRef}>{displayedText}<span className="cursor-blink">|</span></h2>
+        <h2 className="section-title fade-in-section" ref={elementRef}>{displayedText}</h2>
 
         <div className="projects-grid">
           {projectsData.map((project, index) => (
@@ -46,11 +46,11 @@ const Projects = () => {
               <p className="project-description-large">{project.description}</p>
 
               <div className="project-action">
-                <a href={project.github} className="btn-view-project" target="_blank" rel="noopener noreferrer">
+                <a href={project.github} className="btn-view-project cursor-target" target="_blank" rel="noopener noreferrer">
                   VIEW CODE &rarr;
                 </a>
                 {project.live && (
-                  <a href={project.live} className="btn-view-project btn-icon-only" target="_blank" rel="noopener noreferrer" title="View Live Website">
+                  <a href={project.live} className="btn-view-project btn-icon-only cursor-target" target="_blank" rel="noopener noreferrer" title="View Live Website">
                     <Eye size={18} />
                   </a>
                 )}

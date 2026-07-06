@@ -48,7 +48,7 @@
   border-radius: 50%;
   background: var(--bg-dark);
   border: 2px solid var(--accent-color);
-  box-shadow: 0 0 10px rgba(0, 255, 204, 0.5);
+  box-shadow: 0 0 15px var(--accent-color);
   transform: translateY(-50%);
   z-index: 2;
 }
@@ -91,29 +91,28 @@
 }
 
 .education-card {
-  padding: 20px;
+  position: relative;
+  padding: 24px;
   display: flex;
   flex-direction: column;
   gap: 12px;
-  background: var(--card-bg);
-  border: 1px solid var(--card-border);
-  border-radius: 16px;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  background: rgba(20, 20, 25, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 @media (min-width: 768px) {
   .education-card {
-    padding: 30px;
+    padding: 32px;
   }
 }
 
 .education-card:hover {
-  transform: translateY(-5px);
-  border-color: rgba(255, 255, 255, 0.2);
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+  transform: translateX(10px) translateY(-5px);
+  border-color: rgba(204, 255, 0, 0.3);
+  box-shadow: -10px 15px 40px rgba(0, 0, 0, 0.4);
 }
 
 .education-period {
@@ -122,33 +121,40 @@
   gap: 8px;
   font-family: monospace;
   font-size: 0.9rem;
-  font-weight: 500;
-  color: var(--text-primary);
-  background: rgba(255, 255, 255, 0.05);
-  padding: 6px 14px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 20px;
+  font-weight: 700;
+  color: #000;
+  background: var(--accent-color);
+  padding: 6px 16px;
+  border: 2px solid #000;
+  border-radius: 4px;
   letter-spacing: 1px;
+  box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.6);
+}
+
+.education-period .text-accent {
+  color: #000;
 }
 
 .institution-name {
+  font-family: var(--font-heading);
   font-size: 1.4rem;
   color: var(--text-primary);
-  margin-top: 8px;
+  display: flex;
+  align-items: center;
 }
 
 .degree-name {
-  font-family: var(--font-heading);
+  font-family: var(--font-body);
   font-size: 1.1rem;
   font-weight: 500;
   color: var(--text-primary);
   opacity: 0.9;
+  margin-left: 28px;
 }
 
 .education-details {
   display: flex;
-  align-items: flex-start;
-  margin-top: 8px;
+  align-items: center;
   color: var(--text-secondary);
   font-size: 0.95rem;
   line-height: 1.5;

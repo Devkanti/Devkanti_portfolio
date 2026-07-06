@@ -1,15 +1,15 @@
 import { GraduationCap, Calendar, Award } from 'lucide-react';
-import { useTypewriterOnScroll } from '../hooks/useTypewriterOnScroll';
+import { useScrambleOnScroll } from '../hooks/useScrambleOnScroll';
 import './Education.css';
 
 const Education = () => {
-  const { displayedText, elementRef } = useTypewriterOnScroll('Academic', 100);
+  const { displayedText, elementRef } = useScrambleOnScroll('Academic', 30);
   const educationData = [
     {
       period: '2024 - 2028',
       institution: 'Vellore Institute of Technology',
       degree: 'B.Tech in Information Technology',
-      details: 'CGPA - Coming Soon!',
+      details: 'CGPA: 8.6',
     },
     {
       period: '2022 - 2024',
@@ -28,7 +28,7 @@ const Education = () => {
   return (
     <section id="education" className="section education-section">
       <div className="container">
-        <h2 className="section-title fade-in-section" ref={elementRef as React.RefObject<HTMLHeadingElement>}>{displayedText}<span className="cursor-blink">|</span></h2>
+        <h2 className="section-title fade-in-section" ref={elementRef as React.RefObject<HTMLHeadingElement>}>{displayedText}</h2>
 
         <div className="education-timeline">
           {educationData.map((edu, index) => (
@@ -47,7 +47,7 @@ const Education = () => {
                 </div>
 
                 <h3 className="institution-name">
-                  <GraduationCap size={20} className="text-accent mr-2 inline" style={{ marginRight: '8px', verticalAlign: 'text-bottom' }} />
+                  <GraduationCap size={20} className="text-accent" style={{ marginRight: '8px' }} />
                   {edu.institution}
                 </h3>
 
@@ -55,7 +55,7 @@ const Education = () => {
 
                 {edu.details && (
                   <div className="education-details">
-                    <Award size={16} className="text-accent" style={{ marginRight: '6px' }} />
+                    <Award size={16} className="text-accent" style={{ marginRight: '12px' }} />
                     <p>{edu.details}</p>
                   </div>
                 )}

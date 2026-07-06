@@ -1,0 +1,55 @@
+.target-cursor-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0px !important;
+  height: 0px !important;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.target-cursor-dot {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 6px;
+  border-radius: 9999px;
+  transform: translate(-50%, -50%);
+}
+
+.target-cursor-corner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 12px;
+  height: 12px;
+  border-width: 3px;
+  border-style: solid;
+}
+
+.target-cursor-corner-1 {
+  border-right-width: 0;
+  border-bottom-width: 0;
+}
+
+.target-cursor-corner-2 {
+  border-left-width: 0;
+  border-bottom-width: 0;
+}
+
+.target-cursor-corner-3 {
+  border-left-width: 0;
+  border-top-width: 0;
+}
+
+.target-cursor-corner-4 {
+  border-right-width: 0;
+  border-top-width: 0;
+}
+
+@media (pointer: coarse), (hover: none) {
+  .target-cursor-wrapper {
+    display: none !important;
+  }
+}

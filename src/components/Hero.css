@@ -1,5 +1,5 @@
 .hero {
-  padding-top: 120px;
+  padding: 60px 0;
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -8,12 +8,13 @@
 .hero-container {
   display: flex;
   flex-direction: column;
-  gap: 60px;
+  gap: 32px;
 }
 
 @media (min-width: 992px) {
   .hero-container {
     flex-direction: row;
+    gap: 60px;
     align-items: center;
     justify-content: space-between;
   }
@@ -49,13 +50,21 @@
 }
 
 @keyframes pulseDotPink {
-  0% { box-shadow: 0 0 0 0 rgba(255, 51, 102, 0.4); }
-  70% { box-shadow: 0 0 0 10px rgba(255, 51, 102, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(255, 51, 102, 0); }
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 51, 102, 0.4);
+  }
+
+  70% {
+    box-shadow: 0 0 0 10px rgba(255, 51, 102, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 51, 102, 0);
+  }
 }
 
 .name {
-  font-size: clamp(3rem, 8vw, 5rem);
+  font-size: clamp(2.5rem, 8vw, 5rem);
   line-height: 1.1;
   margin-bottom: 16px;
   color: var(--text-primary);
@@ -71,8 +80,15 @@
 }
 
 @keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
 }
 
 .title {

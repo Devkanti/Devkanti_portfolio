@@ -1,0 +1,32 @@
+.lanyard-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+  pointer-events: none;
+  transition: transform 1s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.lanyard-wrapper.hide-up {
+  transform: translateY(-100vh);
+}
+
+.lanyard-container {
+  width: 100%;
+  height: 100%;
+}
+
+.lanyard-container canvas {
+  pointer-events: none !important; 
+}
+
+.lanyard-container canvas {
+  pointer-events: auto;
+  cursor: grab;
+}
+
+.lanyard-container canvas:active {
+  cursor: grabbing;
+}
