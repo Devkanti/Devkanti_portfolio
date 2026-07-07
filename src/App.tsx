@@ -151,10 +151,18 @@ function App() {
         </div>
       </footer>
 
-      {/* Render Lanyard only when past Hero on Desktop, pull it up when at Contact */}
-      {showLanyard && !isMobile && (
-        <div className={`lanyard-wrapper ${isContactVisible ? 'hide-up' : ''}`}>
-          <Lanyard position={[0, 0, 20]} gravity={[0, -40, 0]} frontImage="/profile.jpg" backImage="/back-yellow.svg" />
+      {/* Always render Lanyard on Desktop in background to prevent WebGL compile lag on scroll */}
+      {!isMobile && (
+        <div 
+          className={`lanyard-wrapper ${isContactVisible ? 'hide-up' : ''}`}
+          style={{
+            opacity: showLanyard ? 1 : 0,
+            pointerEvents: showLanyard ? 'auto' : 'none',
+            visibility: showLanyard ? 'visible' : 'hidden',
+            transition: 'opacity 0.4s ease-out, visibility 0.4s ease-out'
+          }}
+        >
+          <Lanyard position={[0, 0, 20]} gravity={showLanyard ? [0, -40, 0] : [0, 0, 0]} frontImage="/profile.jpg" backImage="/back-yellow.svg" />
         </div>
       )}
 
