@@ -77,8 +77,8 @@ export default function Lanyard({
     <div className="lanyard-container">
       <Canvas
         camera={{ position, fov }}
-        dpr={[1, isMobile ? 1 : 1.5]}
-        gl={{ alpha: transparent, antialias: false }}
+        dpr={[1, isMobile ? 1 : 2]}
+        gl={{ alpha: transparent, antialias: true }}
         onCreated={({ gl }) => gl.setClearColor(new THREE.Color(0x000000), transparent ? 0 : 1)}
         eventSource={document.getElementById('root') as HTMLElement}
         eventPrefix="client"
@@ -196,13 +196,27 @@ function Band({
     if (!frontImage && !backImage) return baseMap;
 
     const baseImg = baseMap.image as any;
-    const W = baseImg.width;
-    const H = baseImg.height;
+    
+    // Ensure the texture atlas is at least 2048px wide for crystal clear resolution
+    let SCALE = 1;
+    while (baseImg.width * SCALE < 2048) {
+      SCALE++;
+    }
+    // Cap scale to prevent exceeding max GPU texture size
+    if (SCALE > 8) SCALE = 8;
+    
+    const W = baseImg.width * SCALE;
+    const H = baseImg.height * SCALE;
     const canvas = document.createElement('canvas');
     canvas.width = W;
     canvas.height = H;
     const ctx = canvas.getContext('2d');
     if (!ctx) return baseMap;
+    
+    // Enable high quality image smoothing
+    ctx.imageSmoothingEnabled = true;
+    (ctx as any).imageSmoothingQuality = 'high';
+    
     // Keep the original baked atlas for the card edges and any untouched face.
     ctx.drawImage(baseImg, 0, 0, W, H);
 
@@ -341,8 +355,8 @@ function Band({
                 map-anisotropy={16}
                 clearcoat={isMobile ? 0 : 1}
                 clearcoatRoughness={0.15}
-                roughness={0.9}
-                metalness={0.8}
+                roughness={0.3}
+                metalness={0.1}
               />
             </mesh>
             <mesh geometry={nodes.clip.geometry} material={materials.metal} material-roughness={0.3} />

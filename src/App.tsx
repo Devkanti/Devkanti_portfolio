@@ -15,10 +15,14 @@ import './index.css';
 function App() {
   const [isHeroVisible, setIsHeroVisible] = useState(true);
   const [isContactVisible, setIsContactVisible] = useState(false);
+  const [isMobile, setIsMobile] = useState(() => typeof window !== 'undefined' && window.innerWidth < 768);
   const showLanyard = !isHeroVisible; // Keep mounted while past hero
   const showGetInTouch = !isContactVisible;
 
   useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener('resize', handleResize);
+
     // Force scroll to top on page load/refresh
     if ('scrollRestoration' in window.history) {
       window.history.scrollRestoration = 'manual';
@@ -67,6 +71,7 @@ function App() {
     }
 
     return () => {
+      window.removeEventListener('resize', handleResize);
       fadeObserver.disconnect();
       heroObserver.disconnect();
       contactObserver.disconnect();
@@ -83,7 +88,7 @@ function App() {
           patternScale={2}
           patternDensity={1}
           pixelSizeJitter={0}
-          enableRipples
+          enableRipples={false}
           rippleSpeed={0.4}
           rippleThickness={0.12}
           rippleIntensityScale={1.5}
@@ -146,8 +151,8 @@ function App() {
         </div>
       </footer>
 
-      {/* Render Lanyard only when past Hero, pull it up when at Contact */}
-      {showLanyard && (
+      {/* Render Lanyard only when past Hero on Desktop, pull it up when at Contact */}
+      {showLanyard && !isMobile && (
         <div className={`lanyard-wrapper ${isContactVisible ? 'hide-up' : ''}`}>
           <Lanyard position={[0, 0, 20]} gravity={[0, -40, 0]} frontImage="/profile.jpg" backImage="/back-yellow.svg" />
         </div>
