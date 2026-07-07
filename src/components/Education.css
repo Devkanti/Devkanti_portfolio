@@ -1,38 +1,57 @@
 .education-section {
   position: relative;
+  padding: 80px 0;
+}
+
+.education-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 30px;
+  width: 100%;
+}
+
+@media (min-width: 1024px) {
+  .education-grid {
+    grid-template-columns: 2fr 1fr;
+    gap: 40px;
+  }
+}
+
+.academic-box, .lingual-box {
+  background: rgba(20, 20, 25, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 32px;
+  padding: 40px 24px;
+  width: 100%;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+@media (min-width: 768px) {
+  .academic-box, .lingual-box {
+    padding: 60px 40px;
+  }
 }
 
 .education-timeline {
   position: relative;
-  max-width: 800px;
-  margin: 40px auto 0;
-  padding-left: 30px;
+  margin: 0;
 }
 
 .education-timeline::before {
   content: '';
   position: absolute;
-  top: 0;
+  top: 8px;
   bottom: 0;
-  left: 10px;
+  left: 5px;
   width: 2px;
-  background: var(--glass-border);
-  border-radius: 2px;
-}
-
-@media (min-width: 768px) {
-  .education-timeline {
-    padding-left: 40px;
-  }
-
-  .education-timeline::before {
-    left: 15px;
-  }
+  background: rgba(255, 255, 255, 0.15);
 }
 
 .timeline-item {
   position: relative;
   margin-bottom: 40px;
+  padding-left: 36px;
 }
 
 .timeline-item:last-child {
@@ -41,129 +60,178 @@
 
 .timeline-dot {
   position: absolute;
-  left: -27px;
-  top: 24px;
-  width: 16px;
-  height: 16px;
+  left: 0;
+  top: 5px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
   background: var(--bg-dark);
-  border: 2px solid var(--accent-color);
-  box-shadow: 0 0 15px var(--accent-color);
-  transform: translateY(-50%);
+  border: 2px solid var(--text-secondary);
   z-index: 2;
-}
-
-@media (min-width: 768px) {
-  .timeline-dot {
-    left: -34px;
-    width: 20px;
-    height: 20px;
-  }
+  transition: all 0.3s ease;
 }
 
 .timeline-dot.solid-dot {
-  background: var(--accent-color);
+  background: var(--text-secondary);
+  border-color: var(--text-secondary);
+  opacity: 0.5;
 }
 
 .timeline-dot.blinking-dot {
   background: var(--accent-color);
+  border: 2px solid var(--accent-color);
+  box-shadow: 0 0 15px var(--accent-color);
   animation: pulse-dot 1.5s infinite;
 }
 
 @keyframes pulse-dot {
   0% {
     opacity: 1;
-    transform: translateY(-50%) scale(1);
-    box-shadow: 0 0 0 0 rgba(204, 255, 0, 0.7);
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(204, 255, 0, 0.4);
   }
-
   50% {
-    opacity: 0.5;
-    transform: translateY(-50%) scale(0.9);
-    box-shadow: 0 0 0 10px rgba(204, 255, 0, 0);
+    opacity: 0.7;
+    transform: scale(0.9);
+    box-shadow: 0 0 0 8px rgba(204, 255, 0, 0);
   }
-
   100% {
     opacity: 1;
-    transform: translateY(-50%) scale(1);
+    transform: scale(1);
     box-shadow: 0 0 0 0 rgba(204, 255, 0, 0);
   }
 }
 
-.education-card {
-  position: relative;
-  padding: 24px;
+.education-content {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  background: rgba(20, 20, 25, 0.7);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-@media (min-width: 768px) {
-  .education-card {
-    padding: 32px;
-  }
-}
-
-.education-card:hover {
-  transform: translateX(10px) translateY(-5px);
-  border-color: rgba(204, 255, 0, 0.3);
-  box-shadow: -10px 15px 40px rgba(0, 0, 0, 0.4);
+  gap: 8px;
 }
 
 .education-period {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-family: monospace;
-  font-size: 0.9rem;
-  font-weight: 700;
-  color: #000;
-  background: var(--accent-color);
-  padding: 6px 16px;
-  border: 2px solid #000;
-  border-radius: 4px;
-  letter-spacing: 1px;
-  box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.6);
-}
-
-.education-period .text-accent {
-  color: #000;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  opacity: 0.8;
+  letter-spacing: 0.5px;
 }
 
 .institution-name {
   font-family: var(--font-heading);
-  font-size: 1.4rem;
+  font-size: 1.3rem;
+  font-weight: 800;
   color: var(--text-primary);
-  display: flex;
-  align-items: center;
+  margin: 0;
+  letter-spacing: -0.3px;
 }
 
 .degree-name {
   font-family: var(--font-body);
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 500;
-  color: var(--text-primary);
-  opacity: 0.9;
-  margin-left: 28px;
-}
-
-.education-details {
-  display: flex;
-  align-items: center;
   color: var(--text-secondary);
-  font-size: 0.95rem;
+  margin: 0;
   line-height: 1.5;
 }
 
-.education-details p {
+.lingual-title {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: #ffffff;
+  margin-bottom: 40px;
+  text-transform: uppercase;
+  letter-spacing: -0.5px;
+}
+
+.lingual-list {
+  list-style: none;
+  padding: 0;
   margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.lingual-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.lingual-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.lingual-item:first-child {
+  padding-top: 0;
+}
+
+.lang-name {
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.lang-level {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  letter-spacing: 1px;
 }
 
 .text-accent {
   color: var(--accent-color);
+}
+
+/* Mobile Responsiveness for Boxes */
+@media (max-width: 767px) {
+  .academic-box, .lingual-box {
+    padding: 32px 20px;
+    border-radius: 24px;
+  }
+  
+  .timeline-item {
+    padding-left: 28px;
+  }
+  
+  .institution-name {
+    font-size: 1.1rem;
+  }
+  
+  .degree-name {
+    font-size: 0.95rem;
+  }
+  
+  .lingual-title {
+    font-size: 1.2rem;
+    margin-bottom: 24px;
+  }
+  
+  .lingual-item {
+    padding: 16px 0;
+  }
+  
+  .lang-name {
+    font-size: 1.1rem;
+  }
+  
+  .lang-level {
+    font-size: 0.85rem;
+  }
+  
+  .education-timeline::before {
+    left: 4px;
+  }
+  
+  .timeline-dot {
+    left: -1px;
+    width: 10px;
+    height: 10px;
+  }
 }
