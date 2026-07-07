@@ -1,4 +1,4 @@
-import { GraduationCap, Calendar, Award } from 'lucide-react';
+
 import { useScrambleOnScroll } from '../hooks/useScrambleOnScroll';
 import './Education.css';
 
