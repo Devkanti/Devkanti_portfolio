@@ -112,7 +112,7 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  text-fill-color: transparent;
+  color: transparent;
   
   /* Slight text shadow for pop */
   filter: drop-shadow(0px 4px 20px rgba(204, 255, 0, 0.2));

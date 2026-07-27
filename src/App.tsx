@@ -12,14 +12,10 @@ import PixelBlast from './components/PixelBlast';
 import './index.css';
 
 function App() {
-  const [isHeroVisible, setIsHeroVisible] = useState(true);
   const [isContactVisible, setIsContactVisible] = useState(false);
-  const [isMobile, setIsMobile] = useState(() => typeof window !== 'undefined' && window.innerWidth < 768);
   const showGetInTouch = !isContactVisible;
 
   useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth < 768);
-    window.addEventListener('resize', handleResize);
 
     // Force scroll to top on page load/refresh
     if ('scrollRestoration' in window.history) {
@@ -42,19 +38,6 @@ function App() {
     const fadeElements = document.querySelectorAll('.fade-in-section');
     fadeElements.forEach(el => fadeObserver.observe(el));
 
-    // 2. Observer for the Hero Section to show the Lanyard
-    const heroObserver = new IntersectionObserver(
-      ([entry]) => {
-        setIsHeroVisible(entry.isIntersecting);
-      },
-      { root: null, threshold: 0.1 } 
-    );
-
-    const heroSection = document.getElementById('home') || document.querySelector('section');
-    if (heroSection) {
-      heroObserver.observe(heroSection);
-    }
-
     // 3. Observer for the Contact Section to hide the "Get In Touch" button
     const contactObserver = new IntersectionObserver(
       ([entry]) => {
@@ -69,9 +52,7 @@ function App() {
     }
 
     return () => {
-      window.removeEventListener('resize', handleResize);
       fadeObserver.disconnect();
-      heroObserver.disconnect();
       contactObserver.disconnect();
     };
   }, []);
