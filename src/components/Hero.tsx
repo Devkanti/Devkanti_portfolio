@@ -5,24 +5,57 @@ import './Hero.css';
 
 const Hero = () => {
   const [nameText, setNameText] = useState('');
-  const fullText = 'Devkanti Sarkar';
+  const fullText = "Hi, I'M DEVKANTI";
+  const speed = 150; // Slower typing speed
+
+  const welcomeWords = [
+    "Welcome", // English
+    "স্বাগতম", // Bengali
+    "स्वागत", // Hindi
+    "ようこそ", // Japanese
+    "Bienvenue", // French
+    "Bienvenido", // Spanish
+    "Willkommen", // German
+    "Benvenuto", // Italian
+    "Bem-vindo", // Portuguese
+    "欢迎", // Chinese (Mandarin)
+    "Добро пожаловать", // Russian
+    "أهلاً بك", // Arabic
+    "환영합니다", // Korean
+    "Hoş geldiniz", // Turkish
+    "Chào mừng", // Vietnamese
+    "Welkom", // Dutch
+    "Καλώς ήρθατε", // Greek
+    "Välkommen", // Swedish
+    "Witaj", // Polish
+    "ברוך הבא", // Hebrew
+    "ยินดีต้อนรับ", // Thai
+    "Selamat datang", // Indonesian
+    "Karibu", // Swahili
+    "خوش آمدید", // Urdu/Persian
+    "நல்வரவு", // Tamil
+    "స్వాగతం", // Telugu
+    "സ്വാഗതം", // Malayalam
+    "स्वागत आहे", // Marathi
+    "સ્વાગત છે" // Gujarati
+  ];
+  const [welcomeIndex, setWelcomeIndex] = useState(0);
 
   useEffect(() => {
-    let i = 0;
-    // Track interval properly for strict cleanup
-    let typingInterval: ReturnType<typeof setInterval>;
+    if (nameText.length >= fullText.length) return;
 
-    typingInterval = setInterval(() => {
-      if (i < fullText.length) {
-        setNameText(fullText.substring(0, i + 1));
-        i++;
-      } else {
-        clearInterval(typingInterval);
-      }
-    }, 120);
+    const timeout = setTimeout(() => {
+      setNameText(fullText.substring(0, nameText.length + 1));
+    }, speed);
 
-    // Cleans up the interval if the component unmounts mid-typing
-    return () => clearInterval(typingInterval);
+    return () => clearTimeout(timeout);
+  }, [nameText, fullText, speed]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setWelcomeIndex((prev) => (prev + 1) % welcomeWords.length);
+    }, 3000);
+    return () => clearInterval(interval);
   }, []);
 
   return (
@@ -36,6 +69,9 @@ const Hero = () => {
           <h1 className="name">
             {nameText}<span className="cursor-blink">|</span>
           </h1>
+          <h2 className="welcome-text" key={welcomeIndex}>
+            {welcomeWords[welcomeIndex]}
+          </h2>
           <p className="description">
             Undergraduate at VIT Vellore passionate about building AI-powered applications and scalable full-stack systems. I thrive on solving complex problems, from training machine learning models to designing elegant, high-performance web experiences.
           </p>

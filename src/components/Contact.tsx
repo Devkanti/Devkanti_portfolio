@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { MapPin, Mail, ArrowUpRight } from 'lucide-react';
 import { FiInstagram } from 'react-icons/fi';
-import { useScrambleOnScroll } from '../hooks/useScrambleOnScroll';
+import { useTypewriterOnScroll } from '../hooks/useTypewriterOnScroll';
 import './Contact.css';
 
 const Contact = () => {
   // Using the updated generic hook for type safety
-  const { displayedText, elementRef } = useScrambleOnScroll<HTMLHeadingElement>('Get In Touch', 30);
+  const { displayedText, elementRef } = useTypewriterOnScroll<HTMLHeadingElement>('Get In Touch', 80);
 
   const [formData, setFormData] = useState({
     name: '',
@@ -60,7 +60,7 @@ const Contact = () => {
     <section id="contact" className="section contact-section">
       <div className="container">
         <h2 className="section-title fade-in-section" ref={elementRef}>
-          {displayedText}
+          {displayedText}<span className="blink-cursor">|</span>
         </h2>
 
         <div className="contact-container">

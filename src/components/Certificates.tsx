@@ -1,9 +1,9 @@
 import { Award } from 'lucide-react';
-import { useScrambleOnScroll } from '../hooks/useScrambleOnScroll';
+import { useTypewriterOnScroll } from '../hooks/useTypewriterOnScroll';
 import './Certificates.css';
 
 const Certificates = () => {
-  const { displayedText, elementRef } = useScrambleOnScroll('Certification', 30);
+  const { displayedText, elementRef } = useTypewriterOnScroll('Certification', 80);
   // Add your certificates here
   const certsData: { title: string; issuer: string; date: string; link: string; }[] = [
     {
@@ -41,7 +41,7 @@ const Certificates = () => {
   return (
     <section id="certificates" className="section certificates-section">
       <div className="container">
-        <h2 className="section-title fade-in-section" ref={elementRef as React.RefObject<HTMLHeadingElement>}>{displayedText}</h2>
+        <h2 className="section-title fade-in-section" ref={elementRef as React.RefObject<HTMLHeadingElement>}>{displayedText}<span className="blink-cursor">|</span></h2>
         
         <div className="certificates-grid">
           {certsData.map((cert, index) => (

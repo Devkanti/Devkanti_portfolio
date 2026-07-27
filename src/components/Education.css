@@ -18,13 +18,40 @@
 }
 
 .academic-box, .lingual-box {
-  background: rgba(20, 20, 25, 0.4);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: linear-gradient(145deg, rgba(30, 30, 35, 0.6) 0%, rgba(15, 15, 20, 0.4) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 32px;
   padding: 40px 24px;
   width: 100%;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+}
+
+.academic-box:hover, .lingual-box:hover {
+  transform: translateY(-5px);
+  border-color: rgba(204, 255, 0, 0.3);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), 0 0 20px rgba(204, 255, 0, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* Subtle background noise texture effect using radial gradient */
+.academic-box::before, .lingual-box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 50% 0%, rgba(204, 255, 0, 0.03) 0%, transparent 60%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.education-timeline, .lingual-list, .lingual-title {
+  position: relative;
+  z-index: 1;
 }
 
 @media (min-width: 768px) {
@@ -45,7 +72,8 @@
   bottom: 0;
   left: 5px;
   width: 2px;
-  background: rgba(255, 255, 255, 0.15);
+  background: linear-gradient(to bottom, var(--accent-color), rgba(255, 255, 255, 0.1) 40%, rgba(255, 255, 255, 0.05));
+  border-radius: 2px;
 }
 
 .timeline-item {
@@ -111,10 +139,10 @@
 .education-period {
   font-family: var(--font-body);
   font-size: 0.95rem;
-  font-weight: 600;
-  color: var(--text-secondary);
-  opacity: 0.8;
-  letter-spacing: 0.5px;
+  font-weight: 700;
+  color: var(--accent-color);
+  letter-spacing: 1px;
+  text-transform: uppercase;
 }
 
 .institution-name {
@@ -159,15 +187,25 @@
   align-items: center;
   padding: 24px 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.lingual-item:hover {
+  padding-left: 10px;
+  padding-right: 10px;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 8px;
+  border-bottom-color: transparent;
 }
 
 .lingual-item:last-child {
   border-bottom: none;
-  padding-bottom: 0;
+  padding-bottom: 24px;
 }
 
 .lingual-item:first-child {
-  padding-top: 0;
+  padding-top: 24px;
 }
 
 .lang-name {
@@ -234,4 +272,17 @@
     width: 10px;
     height: 10px;
   }
+}
+
+/* Typing Animation Blinking Cursor */
+.blink-cursor {
+  font-weight: 400;
+  color: var(--text-primary);
+  animation: blink 1s step-end infinite;
+  margin-left: 4px;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }

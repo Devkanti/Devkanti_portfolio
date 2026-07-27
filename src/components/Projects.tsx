@@ -1,10 +1,10 @@
-import { useScrambleOnScroll } from '../hooks/useScrambleOnScroll';
+import { useTypewriterOnScroll } from '../hooks/useTypewriterOnScroll';
 import { Eye } from 'lucide-react';
 import './Projects.css';
 
 const Projects = () => {
   // Pass HTMLHeadingElement to the generic hook - clean and type-safe!
-  const { displayedText, elementRef } = useScrambleOnScroll<HTMLHeadingElement>('Featured Works', 30);
+  const { displayedText, elementRef } = useTypewriterOnScroll<HTMLHeadingElement>('Featured Works', 80);
   const projectsData = [
     {
       category: 'Backend / Systems',
@@ -32,7 +32,7 @@ const Projects = () => {
     <section id="projects" className="section projects-section">
       <div className="container">
         {/* The ref is now natively typed, no "as" keyword needed */}
-        <h2 className="section-title fade-in-section" ref={elementRef}>{displayedText}</h2>
+        <h2 className="section-title fade-in-section" ref={elementRef}>{displayedText}<span className="blink-cursor">|</span></h2>
 
         <div className="projects-grid">
           {projectsData.map((project, index) => (

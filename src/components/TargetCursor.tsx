@@ -194,8 +194,28 @@ const TargetCursor: React.FC<TargetCursorProps> = ({
 
     tickerFnRef.current = tickerFn;
 
-    const moveHandler = (e: MouseEvent) => moveCursor(e.clientX, e.clientY);
+    const moveHandler = (e: MouseEvent) => {
+      if (cursorRef.current && gsap.getProperty(cursorRef.current, 'opacity') === 0) {
+        gsap.to(cursorRef.current, { opacity: 1, duration: 0.2 });
+      }
+      moveCursor(e.clientX, e.clientY);
+    };
     window.addEventListener('mousemove', moveHandler);
+
+    const documentLeaveHandler = () => {
+      if (cursorRef.current) {
+        gsap.to(cursorRef.current, { opacity: 0, duration: 0.2 });
+      }
+    };
+    
+    const documentEnterHandler = () => {
+      if (cursorRef.current) {
+        gsap.to(cursorRef.current, { opacity: 1, duration: 0.2 });
+      }
+    };
+    
+    document.addEventListener('mouseleave', documentLeaveHandler);
+    document.addEventListener('mouseenter', documentEnterHandler);
 
     const scrollHandler = () => {
       if (!activeTarget || !cursorRef.current) return;
@@ -355,6 +375,8 @@ const TargetCursor: React.FC<TargetCursorProps> = ({
         gsap.ticker.remove(tickerFnRef.current);
       }
       window.removeEventListener('mousemove', moveHandler);
+      document.removeEventListener('mouseleave', documentLeaveHandler);
+      document.removeEventListener('mouseenter', documentEnterHandler);
       window.removeEventListener('mouseover', enterHandler as EventListener);
       window.removeEventListener('scroll', scrollHandler);
       window.removeEventListener('resize', resizeHandler);

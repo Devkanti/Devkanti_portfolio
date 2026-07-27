@@ -7,7 +7,6 @@ import Skills from './components/Skills';
 import Projects from './components/Projects';
 import Certificates from './components/Certificates';
 import Contact from './components/Contact';
-import Lanyard from './components/Lanyard';
 import TargetCursor from './components/TargetCursor';
 import PixelBlast from './components/PixelBlast';
 import './index.css';
@@ -16,7 +15,6 @@ function App() {
   const [isHeroVisible, setIsHeroVisible] = useState(true);
   const [isContactVisible, setIsContactVisible] = useState(false);
   const [isMobile, setIsMobile] = useState(() => typeof window !== 'undefined' && window.innerWidth < 768);
-  const showLanyard = !isHeroVisible; // Keep mounted while past hero
   const showGetInTouch = !isContactVisible;
 
   useEffect(() => {
@@ -151,25 +149,10 @@ function App() {
         </div>
       </footer>
 
-      {/* Always render Lanyard on Desktop in background to prevent WebGL compile lag on scroll */}
-      {!isMobile && (
-        <div 
-          className={`lanyard-wrapper ${isContactVisible ? 'hide-up' : ''}`}
-          style={{
-            opacity: showLanyard ? 1 : 0,
-            pointerEvents: showLanyard ? 'auto' : 'none',
-            visibility: showLanyard ? 'visible' : 'hidden',
-            transition: 'opacity 0.4s ease-out, visibility 0.4s ease-out'
-          }}
-        >
-          <Lanyard position={[0, 0, 20]} gravity={showLanyard ? [0, -40, 0] : [0, 0, 0]} frontImage="/profile.jpg" backImage="/back-yellow.svg" />
-        </div>
-      )}
-
-      {/* Standard Button (Hidden when Lanyard is shown or at Contact) */}
+      {/* Standard Button (Hidden when at Contact) */}
       <a 
         href="#contact" 
-        className={`header-get-in-touch cursor-target ${(!showLanyard && showGetInTouch) ? 'visible' : 'hidden'}`}
+        className={`header-get-in-touch cursor-target ${showGetInTouch ? 'visible' : 'hidden'}`}
       >
         Get In Touch
       </a>

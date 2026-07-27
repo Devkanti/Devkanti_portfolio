@@ -1,9 +1,9 @@
 import { Server, Layout, Database, Terminal, Globe } from 'lucide-react';
-import { useScrambleOnScroll } from '../hooks/useScrambleOnScroll';
+import { useTypewriterOnScroll } from '../hooks/useTypewriterOnScroll';
 import './Skills.css';
 
 const Skills = () => {
-  const { displayedText, elementRef } = useScrambleOnScroll('Tech Stack and Languages', 30);
+  const { displayedText, elementRef } = useTypewriterOnScroll('Tech Stack and Languages', 80);
   const skillsData = [
     {
       title: 'Languages',
@@ -35,7 +35,7 @@ const Skills = () => {
   return (
     <section id="skills" className="section skills-section">
       <div className="container">
-        <h2 className="section-title fade-in-section" ref={elementRef as React.RefObject<HTMLHeadingElement>}>{displayedText}</h2>
+        <h2 className="section-title fade-in-section" ref={elementRef as React.RefObject<HTMLHeadingElement>}>{displayedText}<span className="blink-cursor">|</span></h2>
         
         <div className="skills-grid">
           {skillsData.map((skill, index) => (

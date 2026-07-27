@@ -1,15 +1,15 @@
 
-import { useScrambleOnScroll } from '../hooks/useScrambleOnScroll';
+import { useTypewriterOnScroll } from '../hooks/useTypewriterOnScroll';
 import './Education.css';
 
 const Education = () => {
-  const { displayedText, elementRef } = useScrambleOnScroll('ACADEMIC BACKGROUND', 30);
+  const { displayedText, elementRef } = useTypewriterOnScroll('ACADEMIC BACKGROUND', 80);
   const educationData = [
     {
       period: '2024 - 2028',
       institution: 'Vellore Institute of Technology',
       degree: 'B.Tech in Information Technology',
-      details: 'CGPA: 8.6',
+      details: 'CGPA: 8.31',
     },
     {
       period: '2022 - 2024',
@@ -29,7 +29,7 @@ const Education = () => {
     <section id="education" className="section education-section">
       <div className="container" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         <h2 className="section-title fade-in-section is-visible" style={{ alignSelf: 'flex-start' }} ref={elementRef as React.RefObject<HTMLHeadingElement>}>
-          {displayedText}
+          {displayedText}<span className="blink-cursor">|</span>
         </h2>
         
         <div className="education-grid">
