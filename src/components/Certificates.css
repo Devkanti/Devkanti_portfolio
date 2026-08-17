@@ -98,18 +98,21 @@
 
 .cert-date-brutalist {
   position: absolute;
-  top: 0;
+  top: 32px;
   right: 24px;
-  transform: translateY(-50%);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  transform: none;
+  border: 1px solid rgba(255, 255, 255, 0.15);
   color: var(--text-primary);
-  background: var(--bg-dark);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(8px);
   padding: 4px 12px;
-  font-family: monospace;
+  font-family: var(--font-body);
+  font-weight: 600;
   font-size: 0.85rem;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   text-transform: uppercase;
   z-index: 2;
+  border-radius: 20px;
 }
 
 .cert-footer {
