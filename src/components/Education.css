@@ -30,11 +30,7 @@
   overflow: hidden;
 }
 
-.academic-box:hover, .lingual-box:hover {
-  transform: translateY(-5px);
-  border-color: rgba(204, 255, 0, 0.3);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), 0 0 20px rgba(204, 255, 0, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.2);
-}
+
 
 /* Subtle background noise texture effect using radial gradient */
 .academic-box::before, .lingual-box::before {

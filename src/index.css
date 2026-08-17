@@ -210,18 +210,16 @@ ul {
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 12px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
   background: var(--bg-dark);
-  border-left: 1px solid rgba(255, 255, 255, 0.03);
 }
 
 ::-webkit-scrollbar-thumb {
   background-color: rgba(255, 255, 255, 0.2);
   border-radius: 10px;
-  border: 3px solid var(--bg-dark);
 }
 
 ::-webkit-scrollbar-thumb:hover {

@@ -195,9 +195,23 @@ const TargetCursor: React.FC<TargetCursorProps> = ({
     tickerFnRef.current = tickerFn;
 
     const moveHandler = (e: MouseEvent) => {
-      if (cursorRef.current && gsap.getProperty(cursorRef.current, 'opacity') === 0) {
-        gsap.to(cursorRef.current, { opacity: 1, duration: 0.2 });
+      if (!cursorRef.current) return;
+      
+      // Check if mouse is hovering over the native scrollbar (right edge of viewport)
+      // clientWidth excludes the scrollbar, innerWidth includes it.
+      const isOverScrollbar = e.clientX >= document.documentElement.clientWidth - 2;
+      const currentOpacity = gsap.getProperty(cursorRef.current, 'opacity') as number;
+
+      if (isOverScrollbar) {
+        if (currentOpacity !== 0) {
+          gsap.to(cursorRef.current, { opacity: 0, duration: 0.2 });
+        }
+      } else {
+        if (currentOpacity === 0) {
+          gsap.to(cursorRef.current, { opacity: 1, duration: 0.2 });
+        }
       }
+      
       moveCursor(e.clientX, e.clientY);
     };
     window.addEventListener('mousemove', moveHandler);
