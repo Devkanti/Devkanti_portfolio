@@ -62,10 +62,6 @@ const Hero = () => {
     <section id="home" className="hero section">
       <div className="container hero-container">
         <div className="hero-content fade-in-section is-visible">
-          <div className="greeting-hire">
-            <span className="pulse-dot-pink"></span>
-            Available For Hire
-          </div>
           <h1 className="name">
             {nameText}<span className="cursor-blink">|</span>
           </h1>

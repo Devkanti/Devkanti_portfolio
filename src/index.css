@@ -210,20 +210,26 @@ ul {
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 12px;
 }
 
 ::-webkit-scrollbar-track {
   background: var(--bg-dark);
+  border-left: 1px solid rgba(255, 255, 255, 0.03);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--glass-border);
-  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  border: 3px solid var(--bg-dark);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--accent-color);
+  background-color: var(--accent-color);
+}
+
+::-webkit-scrollbar-thumb:active {
+  background-color: var(--accent-hover);
 }
 
 /* Header Action Button */
