@@ -38,7 +38,7 @@
 @media (max-width: 480px) {
   .project-card-brutalist {
     padding: 24px 20px;
-    border-radius: 24px;
+    border-radius: 12px;
   }
 }
 
