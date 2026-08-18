@@ -54,7 +54,7 @@ const Education = () => {
 
                     <div className="degree-name">
                       {edu.degree}
-                      {edu.details && `, ${edu.details}`}
+                      {edu.details && <span className="degree-details">, {edu.details}</span>}
                     </div>
                   </div>
                 </div>

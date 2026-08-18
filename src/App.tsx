@@ -101,7 +101,6 @@ function App() {
       <footer style={{
         textAlign: 'center',
         padding: '40px 24px',
-        borderTop: '1px solid var(--glass-border)',
         marginTop: 'auto',
         position: 'relative',
         zIndex: 10
