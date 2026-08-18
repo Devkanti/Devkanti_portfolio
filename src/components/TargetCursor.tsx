@@ -236,10 +236,14 @@ const TargetCursor: React.FC<TargetCursorProps> = ({
       const { x: offsetX, y: offsetY } = getOffset();
       const mouseX = (gsap.getProperty(cursorRef.current, 'x') as number) + offsetX;
       const mouseY = (gsap.getProperty(cursorRef.current, 'y') as number) + offsetY;
-      const elementUnderMouse = document.elementFromPoint(mouseX, mouseY);
-      const isStillOverTarget =
-        elementUnderMouse &&
-        (elementUnderMouse === activeTarget || elementUnderMouse.closest(targetSelector) === activeTarget);
+      
+      const rect = activeTarget.getBoundingClientRect();
+      const isStillOverTarget = 
+        mouseX >= rect.left && 
+        mouseX <= rect.right && 
+        mouseY >= rect.top && 
+        mouseY <= rect.bottom;
+        
       if (!isStillOverTarget) {
         currentLeaveHandler?.();
       }

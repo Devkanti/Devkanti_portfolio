@@ -24,12 +24,11 @@
   margin-top: 20px;
   
   /* Premium glassmorphism background */
-  background: linear-gradient(145deg, rgba(30, 30, 35, 0.6) 0%, rgba(15, 15, 20, 0.4) 100%);
+  background: linear-gradient(145deg, rgba(35, 35, 40, 0.95) 0%, rgba(20, 20, 25, 0.85) 100%);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 32px;
+  border-radius: 12px;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(12px);
-  overflow: hidden;
+  /* Removed backdrop-filter for scroll performance */
 }
 
 .project-card-brutalist > * {
@@ -55,25 +54,24 @@
   background: radial-gradient(circle at 50% 0%, rgba(204, 255, 0, 0.03) 0%, transparent 60%);
   z-index: 0;
   pointer-events: none;
+  border-radius: inherit;
+  overflow: hidden;
 }
 
 .project-badge {
   position: absolute;
-  top: 32px;
+  top: 0;
   right: 24px;
-  transform: none;
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  transform: translateY(-50%);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   color: var(--text-primary);
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(8px);
+  background: var(--bg-dark);
   padding: 4px 12px;
-  font-family: var(--font-body);
-  font-weight: 600;
+  font-family: monospace;
   font-size: 0.75rem;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
   text-transform: uppercase;
   z-index: 2;
-  border-radius: 20px;
 }
 
 .project-title-large {

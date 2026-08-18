@@ -18,13 +18,13 @@
 }
 
 .academic-box, .lingual-box {
-  background: linear-gradient(145deg, rgba(30, 30, 35, 0.6) 0%, rgba(15, 15, 20, 0.4) 100%);
+  background: linear-gradient(145deg, rgba(35, 35, 40, 0.95) 0%, rgba(20, 20, 25, 0.85) 100%);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 32px;
+  border-radius: 12px;
   padding: 40px 24px;
   width: 100%;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(12px);
+  /* Removed backdrop-filter for scroll performance */
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   position: relative;
   overflow: hidden;
@@ -188,35 +188,51 @@
 }
 
 .lingual-item:hover {
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-left: 12px;
+  padding-right: 12px;
   background: rgba(255, 255, 255, 0.02);
-  border-radius: 8px;
+  border-radius: 12px;
   border-bottom-color: transparent;
 }
 
 .lingual-item:last-child {
   border-bottom: none;
-  padding-bottom: 24px;
+  padding-bottom: 12px;
 }
 
 .lingual-item:first-child {
-  padding-top: 24px;
+  padding-top: 12px;
 }
 
 .lang-name {
   font-family: var(--font-heading);
-  font-size: 1.3rem;
-  font-weight: 800;
+  font-size: 1.2rem;
+  font-weight: 700;
   color: var(--text-primary);
+  transition: color 0.3s ease;
+}
+
+.lingual-item:hover .lang-name {
+  color: #ffffff;
 }
 
 .lang-level {
   font-family: var(--font-body);
-  font-size: 0.95rem;
+  font-size: 0.85rem;
   font-weight: 700;
-  color: var(--text-secondary);
+  color: var(--accent-color);
+  background: rgba(204, 255, 0, 0.05);
+  border: 1px solid rgba(204, 255, 0, 0.2);
+  padding: 6px 14px;
+  border-radius: 20px;
   letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+
+.lingual-item:hover .lang-level {
+  background: var(--accent-color);
+  color: #000;
+  box-shadow: 0 0 15px rgba(204, 255, 0, 0.4);
 }
 
 .text-accent {
@@ -249,6 +265,11 @@
   
   .lingual-item {
     padding: 16px 0;
+  }
+  
+  .lingual-item:hover {
+    padding-left: 8px;
+    padding-right: 8px;
   }
   
   .lang-name {

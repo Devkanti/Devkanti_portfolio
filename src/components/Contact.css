@@ -100,11 +100,11 @@
   /* Premium glassmorphism background + noise */
   background: 
     radial-gradient(circle at 50% 0%, rgba(204, 255, 0, 0.03) 0%, transparent 60%),
-    linear-gradient(145deg, rgba(30, 30, 35, 0.6) 0%, rgba(15, 15, 20, 0.4) 100%);
+    linear-gradient(145deg, rgba(35, 35, 40, 0.95) 0%, rgba(20, 20, 25, 0.85) 100%);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 32px;
+  border-radius: 12px;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(12px);
+  /* Removed backdrop-filter for scroll performance */
 }
 
 .cyber-card::before {
@@ -116,7 +116,7 @@
   height: 40px;
   border-top: 2px solid var(--accent-color);
   border-right: 2px solid var(--accent-color);
-  border-radius: 0 32px 0 0;
+  border-radius: 0 12px 0 0;
   pointer-events: none;
   transition: all 0.3s ease;
   z-index: 2;
@@ -131,7 +131,7 @@
   height: 40px;
   border-bottom: 2px solid var(--accent-color);
   border-left: 2px solid var(--accent-color);
-  border-radius: 0 0 0 32px;
+  border-radius: 0 0 0 12px;
   pointer-events: none;
   transition: all 0.3s ease;
   z-index: 2;

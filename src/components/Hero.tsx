@@ -6,7 +6,7 @@ import './Hero.css';
 const Hero = () => {
   const [nameText, setNameText] = useState('');
   const fullText = "Hi, I'M DEVKANTI";
-  const speed = 150; // Slower typing speed
+  const speed = 60; // Faster, punchy typing speed
 
   const welcomeWords = [
     "Welcome", // English
